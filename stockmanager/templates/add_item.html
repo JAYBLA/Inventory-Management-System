@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+
+{% block title %}
+    Home
+{% endblock title %}
+
+
+{% block content %}
+<div class="bg-light p-5 rounded">
+    <h1>Add item</h1>
+    <p>
+        <form method="post" action="">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Item Category</label>
+              {% render_field form.category class="form-control" %}
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Item Name</label>
+                {% render_field form.item_name class="form-control" %}
+              </div>
+            <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Item Quantity</label>
+            {% render_field form.quantity class="form-control" %}
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+    </p>
+  </div>
+{% endblock content %}
+    
+    

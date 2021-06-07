@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+    Home
+{% endblock title %}
+
+
+{% block content %}
+<div class="bg-light p-5 rounded">
+    <div class="heading">{{heading}}</div>
+    <div class="display_table">
+        <table class='table'>
+            <thead>
+              <tr>
+                <th>COUNT</th>
+                <th>CATEGORY</th>
+                <th>ITEM NAME</th>
+                <th>QUANTITY IN STORE</th>
+              </tr>
+            </thead>
+          {% for instance in items %}
+              <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{instance.category}}</td>
+                <td>{{instance.item_name}}</td>
+                <td>{{instance.quantity}}</td>
+              </tr>
+          {% endfor %}
+        </table>
+    </div><!--End of display table-->
+
+  </div>
+{% endblock content %}
+    
+    
