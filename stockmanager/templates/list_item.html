@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load widget_tweaks %}
 
 
 {% block title %}
@@ -10,6 +11,19 @@
 {% block content %}
 <div class="bg-light p-5 rounded">
     <div class="heading">{{heading}}</div>
+    <form method='POST' action=''>
+      {% csrf_token %}
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Item Category</label>
+        {% render_field form.category class="form-control" %}
+      </div>
+      <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Item Name</label>
+          {% render_field form.item_name class="form-control" %}
+      </div>
+      <input type="submit" value='Search'/>
+    </form>
+    <br>
     <div class="display_table">
         <table class='table'>
             <thead>
