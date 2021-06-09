@@ -24,6 +24,9 @@ def add_item(request):
     return render(request, template_name, context)
 
 
+def is_valid_queryparam(param):
+    return param != '' and param is not None
+
 def list_item(request):
     template_name = 'list_item.html'
     form = StockSearchForm(request.POST or None)
@@ -33,11 +36,17 @@ def list_item(request):
         'items':items,
         'heading':'Items List'
     }
+    
+
     if request.method == 'POST':
-        items = Stock.objects.filter(
-            category__icontains=form['category'].value(),
-            item_name__icontains=form['item_name'].value()
-        )
+        category = form['category'].value()
+        item_name = form['item_name'].value()
+        if is_valid_queryparam(category):
+            items = Stock.objects.filter(category__icontains= category)
+
+        if is_valid_queryparam(item_name):
+            items = Stock.objects.filter(item_name__icontains=item_name)
+            
         if form['export_to_CSV'].value() == True:
             response = HttpResponse(content_type='text/csv')
             response['Content-Disposition'] = 'attachment; filename="List of stock.csv"'
