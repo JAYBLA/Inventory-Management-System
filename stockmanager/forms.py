@@ -1,13 +1,14 @@
 from django import forms
-from .models import Stock
+from .models import Stock, Category
 
 class StockCreateForm(forms.ModelForm):
     class Meta:
         model = Stock
         fields =['category', 'item_name', 'quantity']
         
-class StockSearchForm(forms.ModelForm):
-  export_to_CSV = forms.BooleanField(required=False)
+
+    
+class CategoryCreateForm(forms.ModelForm):
   class Meta:
-    model = Stock
-    fields = ['category', 'item_name']
+    model = Category
+    fields = ['name']

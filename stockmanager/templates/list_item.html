@@ -4,7 +4,7 @@
 
 
 {% block title %}
-    Home
+    Items List in Stock
 {% endblock title %}
 
 
@@ -22,10 +22,10 @@
 <div class="bg-light  rounded">
     <div class="heading">{{heading}}</div>
     <div class="display_table p-5">
-        <table id="example" class="table table-striped" style="width:100%">
+        <table id="example" class="table table-striped pt-3" style="width:100%">
             <thead>
               <tr>
-                <th>COUNT</th>
+                <th>S/N</th>
                 <th>CATEGORY</th>
                 <th>ITEM NAME</th>
                 <th>QUANTITY IN STORE</th>
@@ -75,7 +75,7 @@
           $('.buttons-csv').html('<i class="fa fa-file-text-o text-success"/>')
           $('.buttons-excel').html('<i class="fa fa-file-excel-o text-success"/>')
           $('.buttons-pdf').html('<i class="fa fa-file-pdf-o text-danger"/>')
-          $('.buttons-print').html('<i class="fa fa-print text-danger"/>')
+          $('.buttons-print').html('<i class="fa fa-print text-dark"/>')
           }
       } );
   

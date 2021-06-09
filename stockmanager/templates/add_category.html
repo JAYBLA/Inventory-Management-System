@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+
+{% block title %}
+    Add Category
+{% endblock title %}
+
+
+{% block content %}
+<div class="bg-light p-5 rounded">
+    <div class="row">
+        <div class="col-md-6">
+            <h1>Add Category</h1>
+            <p>
+                <form method="post" action="">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">Category Name</label>
+                      {% render_field form.name class="form-control" %}
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </form>
+            </p>
+        </div>
+        <div class="col-md-6">
+            {% if categories %}
+            <table id="example" class="table table-striped pt-3" style="width:100%">
+                <thead>
+                  <tr>
+                    <th>S/N</th>
+                    <th>NAME</th>
+                    <th>ACTION</th>
+                  </tr>
+                </thead>
+              {% for category in categories %}
+                  <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{category.name}}</td>
+                    <td>
+                        <a href="{% url 'stockmanager:delete_category' category.id %}">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="text-danger" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                            <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                          </svg>
+                        </a>
+                    </td>
+                  </tr>
+              {% endfor %}
+            </table>
+            {% endif %}
+        </div>
+    </div>
+  </div>
+{% endblock content %}
+    
+    
