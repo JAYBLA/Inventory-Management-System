@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+
+{% block title %}
+  {{heading}}
+{% endblock title %}
+
+
+{% block content %}
+<div class="bg-light p-5 rounded">
+    <h1>{{heading}}</h1>
+        <form method="post" action="">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Issue Quantity</label>
+              {% render_field form.issue_quantity class="form-control" %}
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Issue To</label>
+                {% render_field form.issue_to class="form-control" %}
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+  </div>
+{% endblock content %}
+    
+    

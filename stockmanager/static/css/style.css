@@ -1,8 +1,7 @@
 /*Align the title to the center of the page*/
 .table{
-	font-size: 13px;
 	text-align: center;
-	width: 95%;
+	width: 98%;
 	margin: auto;
 }
 
